@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Message</title>
+    <script>
+        // Function to trigger a voice message
+        function speakMessage(message) {
+            const speech = new SpeechSynthesisUtterance(message);
+            speech.lang = 'en-US';
+            window.speechSynthesis.speak(speech);
+        }
+
+        // Function to send a message to the server
+        async function sendMessage() {
+            const message = "User scanned the QR code!";
+            try {
+                const response = await fetch('https://your-backend.com/api/notify', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message }),
+                });
+                const result = await response.json();
+                console.log('Message sent:', result);
+            } catch (error) {
+                console.error('Error sending message:', error);
+            }
+        }
+
+        // Automatically speak and send message when page loads
+        window.onload = function() {
+            speakMessage("You have successfully scanned the QR code!");
+            sendMessage();
+        };
+    </script>
+</head>
+<body>
+    <h1>Sending Notification to the System...</h1>
+</body>
+</html>

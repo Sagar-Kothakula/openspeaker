@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Voice Trigger</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Scan the QR Code</h1>
+    <div id="qrcode"></div>
+
+    <script>
+        // URL for the QR Code (points to the voice message trigger)
+        let url = "https://your-website.com/trigger-voice"; // Replace with your backend domain
+        new QRCode(document.getElementById("qrcode"), url);
+    </script>
+</body>
+</html>
